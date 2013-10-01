@@ -42,7 +42,8 @@ namespace logstreamxx {
 
 	private:
 
-		int _fd;
+		/** log file descriptor */
+		int _logfd;
 
 		/** log entry/line continuation flag */
 		bool _continue;

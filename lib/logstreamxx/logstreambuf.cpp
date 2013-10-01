@@ -24,7 +24,7 @@
 
 namespace logstreamxx {
 
-	logstreambuf::logstreambuf() : _fd( STDOUT_FILENO ), _continue( false ) {
+	logstreambuf::logstreambuf() : _logfd( STDOUT_FILENO ), _continue( false ) {
 
 		size_t _bufsize = 10;
 
@@ -59,7 +59,7 @@ namespace logstreamxx {
 			if ( wprefix() ) {
 
 				//  write buffer content
-				if ( write( _fd, pbase(), flush_size ) == flush_size ) {
+				if ( write( _logfd, pbase(), flush_size ) == flush_size ) {
 					pbump( -flush_size );
 					return flush_size;
 				}
@@ -79,7 +79,7 @@ namespace logstreamxx {
 		if (! _continue ) {
 
 			// write prefix
-			if ( write( _fd, "-prefix- ", 9 ) != 9 ) {
+			if ( write( _logfd, "-prefix- ", 9 ) != 9 ) {
 				return false;
 			}
 
