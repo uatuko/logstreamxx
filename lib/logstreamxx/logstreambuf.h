@@ -31,6 +31,12 @@ namespace logstreamxx {
 	*/
 	class logstreambuf : public std::streambuf {
 	public:
+
+		/** end-of-file type */
+		enum eof_t {
+			eof = EOF       /*!< end of file */
+		};
+
 		logstreambuf();
 		virtual ~logstreambuf();
 

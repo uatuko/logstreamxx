@@ -73,7 +73,7 @@ namespace logstreamxx {
 
 		}
 
-		return traits_type::eof();
+		return eof;
 
 	}
 
@@ -100,7 +100,7 @@ namespace logstreamxx {
 
 	int logstreambuf::overflow( int c ) {
 
-		if ( c != traits_type::eof() ) {
+		if ( c != eof ) {
 
 			// insert the overflowed char into the buffer
 			*pptr() = c;
@@ -109,8 +109,8 @@ namespace logstreamxx {
 		}
 
 		// flush buffer content
-		if ( flush() == traits_type::eof() ) {
-			return traits_type::eof();
+		if ( flush() == eof ) {
+			return eof;
 		}
 
 		return c;
@@ -121,8 +121,8 @@ namespace logstreamxx {
 	int logstreambuf::sync() {
 
 		// flush buffer
-		if ( flush() == traits_type::eof() ) {
-			return traits_type::eof();
+		if ( flush() == eof ) {
+			return eof;
 		}
 
 		// update continuation flag
