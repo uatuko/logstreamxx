@@ -32,13 +32,20 @@ namespace logstreamxx {
 	class logstreambuf : public std::streambuf {
 	public:
 		logstreambuf();
+		virtual ~logstreambuf();
 
 	protected:
+		virtual int flush();
+		virtual bool wprefix();
 		virtual int overflow( int c = traits_type::eof() );
+		virtual int sync();
 
 	private:
 
 		int _fd;
+
+		/** log entry/line continuation flag */
+		bool _continue;
 
 	};
 

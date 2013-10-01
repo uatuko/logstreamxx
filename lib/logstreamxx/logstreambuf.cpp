@@ -24,17 +24,105 @@
 
 namespace logstreamxx {
 
-	logstreambuf::logstreambuf() : _fd( STDOUT_FILENO ) {
+	logstreambuf::logstreambuf() : _fd( STDOUT_FILENO ), _continue( false ) {
+
+		size_t _bufsize = 10;
+
+		// allocate output buffer space
+		char * pbuf = new char[_bufsize];
+
+		// setup output buffer
+		setp( pbuf, pbuf + ( _bufsize - 1 ) );
 
 	}
 
+
+	logstreambuf::~logstreambuf() {
+
+		// sync
+		sync();
+
+		// cleanup output buffer
+		delete [] pbase();
+
+	}
+
+
+	int logstreambuf::flush() {
+
+		int flush_size = pptr() - pbase();
+
+		// sanity check - is there anything to flush?
+		if ( flush_size > 0 ) {
+
+			// write prefix
+			if ( wprefix() ) {
+
+				//  write buffer content
+				if ( write( _fd, pbase(), flush_size ) == flush_size ) {
+					pbump( -flush_size );
+					return flush_size;
+				}
+
+			}
+
+		}
+
+		return traits_type::eof();
+
+	}
+
+
+	bool logstreambuf::wprefix() {
+
+		// check - do we need to write the prefix
+		if (! _continue ) {
+
+			// write prefix
+			if ( write( _fd, "-prefix- ", 9 ) != 9 ) {
+				return false;
+			}
+
+		}
+
+		// update continuation flag
+		_continue = true;
+
+		return true;
+
+	}
+
+
 	int logstreambuf::overflow( int c ) {
 
-		if ( write( _fd, &c, 1 ) != 1 ) {
+		if ( c != traits_type::eof() ) {
+
+			// insert the overflowed char into the buffer
+			*pptr() = c;
+			pbump( 1 );
+
+		}
+
+		if ( flush() == traits_type::eof() ) {
 			return traits_type::eof();
 		}
 
 		return c;
+
+	}
+
+
+	int logstreambuf::sync() {
+
+		// flush buffer
+		if ( flush() == traits_type::eof() ) {
+			return traits_type::eof();
+		}
+
+		// update continuation flag
+		_continue = false;
+
+		return 0;
 
 	}
 
