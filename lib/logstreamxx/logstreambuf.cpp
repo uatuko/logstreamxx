@@ -24,10 +24,9 @@
 
 namespace logstreamxx {
 
-	logstreambuf::logstreambuf() : _logfd( STDOUT_FILENO ), _continue( false ) {
-
-		// FIXME: this needs cleaning up
-		size_t _bufsize = 10;
+	logstreambuf::logstreambuf() :
+			_logfd( STDOUT_FILENO ), _bufsize( LOGSTREAMBUF_SIZE ),
+			_continue( false ) {
 
 		// allocate output buffer space
 		char * pbuf = new char[_bufsize];

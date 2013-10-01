@@ -23,6 +23,10 @@
 #include <streambuf>
 #include <cstdio>
 
+#ifndef LOGSTREAMBUF_SIZE
+#define LOGSTREAMBUF_SIZE 1024
+#endif
+
 
 namespace logstreamxx {
 
@@ -54,6 +58,9 @@ namespace logstreamxx {
 
 		/** log entry/line continuation flag */
 		bool _continue;
+
+		/** size of the internal buffer */
+		size_t _bufsize;
 
 	};
 
