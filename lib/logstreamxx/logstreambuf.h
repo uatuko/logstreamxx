@@ -21,6 +21,7 @@
 #define LOGSTREAMXX_LOGSTREAMBUF_H
 
 #include <streambuf>
+#include <cstdio>
 
 
 namespace logstreamxx {
