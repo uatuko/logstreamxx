@@ -30,10 +30,27 @@ namespace logstreamxx {
 	/**
 	*   @brief Log stream controller class
 	*
+	*   This is the log stream output controller class.
+	*
 	*/
 	class logstream : public std::ostream {
 	public:
+
+		/**
+		*   @brief constructor
+		*
+		*   Initialise a log output stream with standard output ( @c STDOUT )
+		*   as the destination.
+		*
+		*/
 		logstream();
+
+		/**
+		*   @brief destructor
+		*
+		*   Deallocate associated buffers.
+		*
+		*/
 		virtual ~logstream();
 
 	};

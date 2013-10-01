@@ -33,6 +33,9 @@ namespace logstreamxx {
 	/**
 	*   @brief Log stream buffer class
 	*
+	*   Stream buffer class with only an output sequence and the output
+	*   sequence will be associated with a file destination.
+	*
 	*/
 	class logstreambuf : public std::streambuf {
 	public:
@@ -42,13 +45,75 @@ namespace logstreamxx {
 			eof = EOF       /*!< end of file */
 		};
 
+		/**
+		*   @brief constructor
+		*
+		*   Initialise a log stream buffer with standard output ( @c STDOUT )
+		*   as the log output destination.
+		*
+		*/
 		logstreambuf();
+
+		/**
+		*   @brief destructor
+		*
+		*   Deallocate output buffer space.
+		*
+		*/
 		virtual ~logstreambuf();
 
+
 	protected:
+
+		/**
+		*   @brief flush the log buffer to the destination
+		*   @return number of characters flushed or logstreambuf::eof
+		*           to indicate failure
+		*
+		*   Flush the log stream buffer by writing the content to the
+		*   associated destination.
+		*
+		*/
 		virtual int flush();
+
+		/**
+		*   @brief write the log line prefix to destination
+		*   @return boolean @c true or @c false to indicate success or
+		*           failure
+		*
+		*   Write the log line prefix to the associated destination only
+		*   if needed. i.e. continuation flag is not set.
+		*
+		*   @note This will set the continuation flag after writing the
+		*   prefix.
+		*
+		*/
 		virtual bool wprefix();
-		virtual int overflow( int c = traits_type::eof() );
+
+		/**
+		*   @brief consume the buffer
+		*   @param c additional character to consume
+		*   @return logstreambuf::eof on failure or @a c on success
+		*
+		*   Consumes the buffer content by writing out to the destination.
+		*   if @a c is not logstreambuf::eof then @a c is also consumed.
+		*
+		*   @note If the buffer overflow then the written out log lines
+		*         could be out of order on a multi-threaded environment.
+		*
+		*/
+		virtual int overflow( int c = eof );
+
+		/**
+		*   @brief sync data with the destination
+		*   @return 0 on success or logstreambuf::eof on failure
+		*
+		*   Synchronise the buffer content with the destination by flushing
+		*   the content using flush().
+		*
+		*   @note This will clear the continuation flag on success
+		*
+		*/
 		virtual int sync();
 
 	private:
