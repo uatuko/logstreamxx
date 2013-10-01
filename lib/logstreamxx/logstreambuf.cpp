@@ -26,6 +26,7 @@ namespace logstreamxx {
 
 	logstreambuf::logstreambuf() : _logfd( STDOUT_FILENO ), _continue( false ) {
 
+		// FIXME: this needs cleaning up
 		size_t _bufsize = 10;
 
 		// allocate output buffer space
@@ -60,8 +61,12 @@ namespace logstreamxx {
 
 				//  write buffer content
 				if ( write( _logfd, pbase(), flush_size ) == flush_size ) {
+
+					// update buffer pointers
 					pbump( -flush_size );
+
 					return flush_size;
+
 				}
 
 			}
@@ -103,6 +108,7 @@ namespace logstreamxx {
 
 		}
 
+		// flush buffer content
 		if ( flush() == traits_type::eof() ) {
 			return traits_type::eof();
 		}
