@@ -1,0 +1,3 @@
+## [logstreamxx] lib/
+SUBDIRS = logstreamxx
+
