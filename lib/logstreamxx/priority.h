@@ -42,8 +42,8 @@ namespace logstreamxx {
 		enum log_priority_t {
 			emerg    = 0,    //!< system is unusable
 			alert    = 1,    //!< action must be taken immediately
-			critical = 2,    //!< critical conditions
-			error    = 3,    //!< error conditions
+			crit     = 2,    //!< critical conditions
+			err      = 3,    //!< error conditions
 			warning  = 4,    //!< warning conditions
 			notice   = 5,    //!< normal, but significant, condition
 			info     = 6,    //!< informational message
