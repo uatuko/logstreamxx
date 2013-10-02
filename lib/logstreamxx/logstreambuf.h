@@ -113,8 +113,8 @@ namespace logstreamxx {
 		*   Consumes the buffer content by writing out to the destination.
 		*   if @a c is not logstreambuf::eof then @a c is also consumed.
 		*
-		*   @note If the buffer overflow then the written out log lines
-		*         could be out of order on a multi-threaded environment.
+		*   @note If the buffer overflows then the written out log lines
+		*         could be out of order on a multi-process environment.
 		*
 		*/
 		virtual int overflow( int c = eof );
