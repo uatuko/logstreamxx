@@ -8,6 +8,7 @@ SUBDIRS = \
 	doc \
 	include \
 	lib \
+	src \
 	test
 
 # extra dist files

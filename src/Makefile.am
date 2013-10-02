@@ -1,0 +1,3 @@
+## [logstreamxx] src/
+SUBDIRS = examples
+

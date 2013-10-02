@@ -79,6 +79,8 @@ AC_CONFIG_FILES([ \
 	include/Makefile \
 	lib/Makefile \
 	lib/logstreamxx/Makefile \
+	src/Makefile \
+	src/examples/Makefile \
 	test/Makefile \
 ])
 
