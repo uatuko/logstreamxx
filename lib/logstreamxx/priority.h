@@ -50,6 +50,32 @@ namespace logstreamxx {
 			debug    = 7     //!< debug-level message
 		};
 
+		/**
+		*   @brief convert log priority value into readable text
+		*   @return text value of the log priority
+		*
+		*   This helper method maps priority::log_priority_t values into
+		*   readable text and returns a C style char pointer.
+		*
+		*/
+		static const char * text( const log_priority_t &p ) {
+
+			// priority value to text mapping
+			static char priority_name[8][5] = {
+				"EMRG",
+				"ALRT",
+				"CRIT",
+				"EROR",
+				"WARN",
+				"NTCE",
+				"INFO",
+				"DEBG"
+			};
+
+			return priority_name[p];
+
+		}
+
 	};
 
 } /* end of namespace logstreamxx */
