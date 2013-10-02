@@ -47,7 +47,7 @@ namespace logstreamxx {
 		logstreambuf * sb = (logstreambuf *) rdbuf();
 
 		// set priority for the log stream buffer
-		sb->priority( p );
+		sb->lpriority( p );
 
 		return *this;
 

@@ -139,7 +139,7 @@ namespace logstreamxx {
 	}
 
 
-	priority::log_priority_t logstreambuf::priority( const priority::log_priority_t &p ) {
+	priority::log_priority_t logstreambuf::lpriority( const priority::log_priority_t &p ) {
 
 		// backup the current priority
 		priority::log_priority_t prev_priority = _priority;

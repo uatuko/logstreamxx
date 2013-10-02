@@ -65,16 +65,16 @@ namespace logstreamxx {
 		virtual ~logstreambuf();
 
 		/**
-		*   @brief set the log priority
+		*   @brief change the log priority
 		*   @param p log priority
 		*   @return previous log priority
 		*
-		*   Set the log priority for the buffer.
+		*   Change the log priority for this buffer instance.
 		*
-		*   @note Log priority defaults to priority::debug
+		*   @note Log priority defaults to priority::debug on initialisation.
 		*
 		*/
-		priority::log_priority_t priority( const priority::log_priority_t &p );
+		priority::log_priority_t lpriority( const priority::log_priority_t &p );
 
 
 	protected:
