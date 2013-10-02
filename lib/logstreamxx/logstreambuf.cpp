@@ -108,7 +108,7 @@ namespace logstreamxx {
 
 			// populate prefix
 			std::stringstream ss;
-			ss  << lstamp() << " [" << _priority << "] ";
+			ss  << lstamp() << " [" << priority::text( _priority ) << "] ";
 
 			// write prefix
 			if ( write( _logfd, ss.str().c_str(), ss.str().length() ) != ss.str().length() ) {
