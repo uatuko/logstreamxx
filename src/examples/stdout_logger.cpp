@@ -23,11 +23,15 @@
 
 int main() {
 
+	// log stream
 	logstreamxx::logstream logger;
+
+	logger << "default is to log at debug level" << std::endl;
 	logger << "24 in hex: " << std::hex << 24 << std::endl;
 	logger << "24 in oct: " << std::oct << 24 << std::endl;
 
-	logger << logstreamxx::priority::info << "this is info level" << std::endl;
+	logger << logstreamxx::priority::info << "this is logged at info level" << std::endl;
+	logger << "this will also be in info level" << std::endl;
 
 	return 0;
 
