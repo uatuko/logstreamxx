@@ -20,6 +20,8 @@
 #ifndef LOGSTREAMXX_LOGSTREAMBUF_H
 #define LOGSTREAMXX_LOGSTREAMBUF_H
 
+#include <logstreamxx/priority.h>
+
 #include <streambuf>
 #include <cstdio>
 
@@ -61,6 +63,18 @@ namespace logstreamxx {
 		*
 		*/
 		virtual ~logstreambuf();
+
+		/**
+		*   @brief set the log priority
+		*   @param p log priority
+		*   @return previous log priority
+		*
+		*   Set the log priority for the buffer.
+		*
+		*   @note Log priority defaults to priority::debug
+		*
+		*/
+		priority::log_priority_t priority( const priority::log_priority_t &p );
 
 
 	protected:
@@ -126,6 +140,9 @@ namespace logstreamxx {
 
 		/** size of the internal buffer */
 		size_t _bufsize;
+
+		/** log priority */
+		priority::log_priority_t _priority;
 
 	};
 

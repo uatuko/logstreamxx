@@ -40,5 +40,18 @@ namespace logstreamxx {
 
 	}
 
+
+	std::ostream &logstream::operator <<( const priority::log_priority_t &p ) {
+
+		// log stream buffer
+		logstreambuf * sb = (logstreambuf *) rdbuf();
+
+		// set priority for the log stream buffer
+		sb->priority( p );
+
+		return *this;
+
+	}
+
 } /* end of namespace logstreamxx */
 

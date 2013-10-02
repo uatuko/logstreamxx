@@ -53,6 +53,11 @@ namespace logstreamxx {
 		*/
 		virtual ~logstream();
 
+		/**
+		*   @brief overloaded output stream operator for log priorities
+		*/
+		std::ostream &operator <<( const priority::log_priority_t &p );
+
 	};
 
 } /* end of namespace logstreamxx */

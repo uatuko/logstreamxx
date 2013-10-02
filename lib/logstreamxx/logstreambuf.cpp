@@ -20,13 +20,14 @@
 #include "logstreambuf.h"
 
 #include <unistd.h>
+#include <sstream>
 
 
 namespace logstreamxx {
 
 	logstreambuf::logstreambuf() :
 			_logfd( STDOUT_FILENO ), _bufsize( LOGSTREAMBUF_SIZE ),
-			_continue( false ) {
+			_continue( false ), _priority( priority::debug ) {
 
 		// allocate output buffer space
 		char * pbuf = new char[_bufsize];
@@ -82,8 +83,14 @@ namespace logstreamxx {
 		// check - do we need to write the prefix
 		if (! _continue ) {
 
+			// FIXME: needs cleanup
+			std::stringstream ss;
+			ss << "-prefix- [" << _priority << "] ";
+
+			std::string s = ss.str();
+
 			// write prefix
-			if ( write( _logfd, "-prefix- ", 9 ) != 9 ) {
+			if ( write( _logfd, s.c_str(), s.length() ) != s.length() ) {
 				return false;
 			}
 
@@ -128,6 +135,19 @@ namespace logstreamxx {
 		_continue = false;
 
 		return 0;
+
+	}
+
+
+	priority::log_priority_t logstreambuf::priority( const priority::log_priority_t &p ) {
+
+		// backup the current priority
+		priority::log_priority_t prev_priority = _priority;
+
+		// update
+		_priority = p;
+
+		return prev_priority;
 
 	}
 
