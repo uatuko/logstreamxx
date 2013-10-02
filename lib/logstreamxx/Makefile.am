@@ -11,6 +11,7 @@ liblogstreamxx_la_SOURCES  = \
 	logstream.cpp
 
 liblogstreamxxinclude_HEADERS = \
+	priority.h \
 	logstreambuf.h \
 	logstream.h
 
