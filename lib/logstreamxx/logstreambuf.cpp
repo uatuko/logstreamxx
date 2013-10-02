@@ -21,6 +21,8 @@
 
 #include <unistd.h>
 #include <sstream>
+#include <ctime>
+#include <sys/time.h>
 
 
 namespace logstreamxx {
@@ -45,6 +47,27 @@ namespace logstreamxx {
 
 		// cleanup output buffer
 		delete [] pbase();
+
+	}
+
+
+	const std::string logstreambuf::lstamp() const throw() {
+
+		timeval tv;
+		tm * ti;
+
+		// current timestamp
+		gettimeofday( &tv, NULL );
+		ti = localtime( &tv.tv_sec );
+
+		// format
+		char buffer[23];
+		int n = strftime( buffer, 16, "%b %e %T", ti );
+
+		// append milliseconds
+		sprintf( ( buffer + n ), ".%ld", tv.tv_usec );
+
+		return buffer;
 
 	}
 
@@ -83,14 +106,12 @@ namespace logstreamxx {
 		// check - do we need to write the prefix
 		if (! _continue ) {
 
-			// FIXME: needs cleanup
+			// populate prefix
 			std::stringstream ss;
-			ss << "-prefix- [" << _priority << "] ";
-
-			std::string s = ss.str();
+			ss  << lstamp() << " [" << _priority << "] ";
 
 			// write prefix
-			if ( write( _logfd, s.c_str(), s.length() ) != s.length() ) {
+			if ( write( _logfd, ss.str().c_str(), ss.str().length() ) != ss.str().length() ) {
 				return false;
 			}
 

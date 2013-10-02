@@ -24,6 +24,7 @@
 
 #include <streambuf>
 #include <cstdio>
+#include <string>
 
 #ifndef LOGSTREAMBUF_SIZE
 #define LOGSTREAMBUF_SIZE 1024
@@ -129,6 +130,16 @@ namespace logstreamxx {
 		*
 		*/
 		virtual int sync();
+
+		/**
+		*   @brief get the log timestamp value
+		*   @return log timestamp
+		*
+		*   This is a helper method to return the current log timestamp
+		*   value as a std::string object.
+		*
+		*/
+		const std::string lstamp() const throw();
 
 	private:
 
