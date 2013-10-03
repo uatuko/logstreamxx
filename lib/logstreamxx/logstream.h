@@ -44,7 +44,7 @@ namespace logstreamxx {
 		*   as the destination.
 		*
 		*/
-		logstream();
+		logstream() throw();
 
 		/**
 		*   @brief overloaded constructor
@@ -67,12 +67,12 @@ namespace logstreamxx {
 		*   Deallocate associated buffers.
 		*
 		*/
-		virtual ~logstream();
+		virtual ~logstream() throw();
 
 		/**
 		*   @brief overloaded output stream operator for log priorities
 		*/
-		std::ostream &operator <<( const priority::log_priority_t &p );
+		std::ostream &operator <<( const priority::log_priority_t &p ) throw();
 
 	private:
 

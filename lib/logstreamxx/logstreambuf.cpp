@@ -27,7 +27,7 @@
 
 namespace logstreamxx {
 
-	logstreambuf::logstreambuf() :
+	logstreambuf::logstreambuf() throw() :
 			_logfd( STDOUT_FILENO ), _bufsize( LOGSTREAMBUF_SIZE ),
 			_continue( false ), _priority( priority::debug ) {
 
@@ -52,7 +52,7 @@ namespace logstreamxx {
 	}
 
 
-	logstreambuf::~logstreambuf() {
+	logstreambuf::~logstreambuf() throw() {
 
 		// sync
 		sync();
@@ -95,7 +95,7 @@ namespace logstreamxx {
 	}
 
 
-	int logstreambuf::flush() {
+	int logstreambuf::flush() throw() {
 
 		int flush_size = pptr() - pbase();
 
@@ -124,7 +124,7 @@ namespace logstreamxx {
 	}
 
 
-	bool logstreambuf::wprefix() {
+	bool logstreambuf::wprefix() throw() {
 
 		// check - do we need to write the prefix
 		if (! _continue ) {
@@ -148,7 +148,7 @@ namespace logstreamxx {
 	}
 
 
-	int logstreambuf::overflow( int c ) {
+	int logstreambuf::overflow( int c ) throw() {
 
 		if ( c != eof ) {
 
@@ -168,7 +168,7 @@ namespace logstreamxx {
 	}
 
 
-	int logstreambuf::sync() {
+	int logstreambuf::sync() throw() {
 
 		// flush buffer
 		if ( flush() == eof ) {
@@ -183,7 +183,7 @@ namespace logstreamxx {
 	}
 
 
-	priority::log_priority_t logstreambuf::lpriority( const priority::log_priority_t &p ) {
+	priority::log_priority_t logstreambuf::lpriority( const priority::log_priority_t &p ) throw() {
 
 		// backup the current priority
 		priority::log_priority_t prev_priority = _priority;

@@ -25,7 +25,7 @@
 
 namespace logstreamxx {
 
-	logstream::logstream() : std::ostream( 0 ), _fd( -1 ) {
+	logstream::logstream() throw() : std::ostream( 0 ), _fd( -1 ) {
 
 		// log stream buffer instance
 		logstreambuf * sb = new logstreambuf();
@@ -65,7 +65,7 @@ namespace logstreamxx {
 	}
 
 
-	logstream::~logstream() {
+	logstream::~logstream() throw() {
 
 		// close any open files
 		if ( _fd != 0 ) {
@@ -78,7 +78,7 @@ namespace logstreamxx {
 	}
 
 
-	std::ostream &logstream::operator <<( const priority::log_priority_t &p ) {
+	std::ostream &logstream::operator <<( const priority::log_priority_t &p ) throw() {
 
 		// log stream buffer
 		logstreambuf * sb = (logstreambuf *) rdbuf();

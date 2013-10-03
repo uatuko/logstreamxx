@@ -56,7 +56,7 @@ namespace logstreamxx {
 		*   as the log output destination.
 		*
 		*/
-		logstreambuf();
+		logstreambuf() throw();
 
 		/**
 		*   @brief overloaded constructor
@@ -74,7 +74,7 @@ namespace logstreamxx {
 		*   Deallocate output buffer space.
 		*
 		*/
-		virtual ~logstreambuf();
+		virtual ~logstreambuf() throw();
 
 		/**
 		*   @brief change the log priority
@@ -86,7 +86,7 @@ namespace logstreamxx {
 		*   @note Log priority defaults to priority::debug on initialisation.
 		*
 		*/
-		priority::log_priority_t lpriority( const priority::log_priority_t &p );
+		priority::log_priority_t lpriority( const priority::log_priority_t &p ) throw();
 
 
 	protected:
@@ -100,7 +100,7 @@ namespace logstreamxx {
 		*   associated destination.
 		*
 		*/
-		virtual int flush();
+		virtual int flush() throw();
 
 		/**
 		*   @brief write the log line prefix to destination
@@ -114,7 +114,7 @@ namespace logstreamxx {
 		*   prefix.
 		*
 		*/
-		virtual bool wprefix();
+		virtual bool wprefix() throw();
 
 		/**
 		*   @brief consume the buffer
@@ -128,7 +128,7 @@ namespace logstreamxx {
 		*         could be out of order on a multi-process environment.
 		*
 		*/
-		virtual int overflow( int c = eof );
+		virtual int overflow( int c = eof ) throw();
 
 		/**
 		*   @brief sync data with the destination
@@ -140,7 +140,7 @@ namespace logstreamxx {
 		*   @note This will clear the continuation flag on success
 		*
 		*/
-		virtual int sync();
+		virtual int sync() throw();
 
 		/**
 		*   @brief get the log timestamp value
