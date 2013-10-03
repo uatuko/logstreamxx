@@ -23,6 +23,7 @@
 #include <logstreamxx/logstreambuf.h>
 
 #include <ostream>
+#include <unistd.h>
 
 
 namespace logstreamxx {
@@ -46,6 +47,21 @@ namespace logstreamxx {
 		logstream();
 
 		/**
+		*   @brief overloaded constructor
+		*   @param filename log destination filename
+		*   @param append boolean flag to indicate whether to append to
+		*                 the log file or truncate the file if already
+		*                 exists
+		*
+		*   @param mode file mode to open the log file with
+		*
+		*   Initialise a log output stream with @c filename as the output
+		*   destination. Destination file will be created if it doesn't exist.
+		*
+		*/
+		logstream( const char * filename, bool append = true, mode_t mode = 00644 ) throw( logexception );
+
+		/**
 		*   @brief destructor
 		*
 		*   Deallocate associated buffers.
@@ -57,6 +73,11 @@ namespace logstreamxx {
 		*   @brief overloaded output stream operator for log priorities
 		*/
 		std::ostream &operator <<( const priority::log_priority_t &p );
+
+	private:
+
+		/** file descriptor */
+		int _fd;
 
 	};
 

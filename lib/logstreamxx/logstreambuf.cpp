@@ -31,11 +31,23 @@ namespace logstreamxx {
 			_logfd( STDOUT_FILENO ), _bufsize( LOGSTREAMBUF_SIZE ),
 			_continue( false ), _priority( priority::debug ) {
 
-		// allocate output buffer space
-		char * pbuf = new char[_bufsize];
+		// initialise buffer space
+		init_buf();
 
-		// setup output buffer
-		setp( pbuf, pbuf + ( _bufsize - 1 ) );
+	}
+
+
+	logstreambuf::logstreambuf( int output_fd ) throw( logexception ) :
+			_logfd( output_fd ), _bufsize( LOGSTREAMBUF_SIZE ),
+			_continue( false ), _priority( priority::debug ) {
+
+		// sanity check
+		if ( _logfd < 0 ) {
+			throw logexception( "invalid file descriptor" );
+		}
+
+		// initialise buffer space
+		init_buf();
 
 	}
 
@@ -47,6 +59,17 @@ namespace logstreamxx {
 
 		// cleanup output buffer
 		delete [] pbase();
+
+	}
+
+
+	void logstreambuf::init_buf() throw() {
+
+		// allocate output buffer space
+		char * pbuf = new char[_bufsize];
+
+		// setup output buffer
+		setp( pbuf, pbuf + ( _bufsize - 1 ) );
 
 	}
 

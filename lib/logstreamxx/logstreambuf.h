@@ -21,6 +21,7 @@
 #define LOGSTREAMXX_LOGSTREAMBUF_H
 
 #include <logstreamxx/priority.h>
+#include <logstreamxx/logexception.h>
 
 #include <streambuf>
 #include <cstdio>
@@ -56,6 +57,16 @@ namespace logstreamxx {
 		*
 		*/
 		logstreambuf();
+
+		/**
+		*   @brief overloaded constructor
+		*   @param output_fd log output file descriptor
+		*
+		*   Initialise a log stream buffer with @c output_fd as the log
+		*   output destination.
+		*
+		*/
+		logstreambuf( int output_fd ) throw( logexception );
 
 		/**
 		*   @brief destructor
@@ -154,6 +165,9 @@ namespace logstreamxx {
 
 		/** log priority */
 		priority::log_priority_t _priority;
+
+		/** initialise buffer space */
+		void init_buf() throw();
 
 	};
 

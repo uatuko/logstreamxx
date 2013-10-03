@@ -19,10 +19,13 @@
 
 #include "logstream.h"
 
+#include <fcntl.h>
+#include <sys/stat.h>
+
 
 namespace logstreamxx {
 
-	logstream::logstream() : std::ostream( 0 ) {
+	logstream::logstream() : std::ostream( 0 ), _fd( -1 ) {
 
 		// log stream buffer instance
 		logstreambuf * sb = new logstreambuf();
@@ -33,7 +36,40 @@ namespace logstreamxx {
 	}
 
 
+	logstream::logstream( const char * filename, bool append, mode_t mode ) throw( logexception ) :
+			std::ostream ( 0 ), _fd( -1 ) {
+
+		// set file open flags
+		int flags = O_WRONLY | O_CREAT | O_APPEND;
+
+		// truncate file?
+		if (! append ) {
+			flags |= O_TRUNC;
+		}
+
+		// open file
+		_fd = ::open( filename, flags, mode );
+
+		// sanity check
+		if ( _fd == -1 ) {
+			throw logexception();
+		}
+
+		// log stream buffer instance
+		logstreambuf * sb = new logstreambuf( _fd );
+
+		// update output buffer
+		rdbuf( sb );
+
+	}
+
+
 	logstream::~logstream() {
+
+		// close any open files
+		if ( _fd != 0 ) {
+			::close( _fd );
+		}
 
 		// cleanup
 		delete rdbuf();
