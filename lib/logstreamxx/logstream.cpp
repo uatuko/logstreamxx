@@ -50,8 +50,9 @@ namespace logstreamxx {
 		// open file
 		_fd = ::open( filename, flags, mode );
 
-		// sanity check
+		// check - was the open file successful?
 		if ( _fd == -1 ) {
+			// throw a log exception with system message
 			throw logexception();
 		}
 

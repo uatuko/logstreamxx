@@ -43,7 +43,7 @@ namespace logstreamxx {
 
 		// sanity check
 		if ( _logfd < 0 ) {
-			throw logexception( "invalid file descriptor" );
+			throw logexception( "Invalid file descriptor" );
 		}
 
 		// initialise buffer space
