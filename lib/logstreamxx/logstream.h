@@ -23,7 +23,7 @@
 #include <logstreamxx/logstreambuf.h>
 
 #include <ostream>
-#include <unistd.h>
+#include <sys/stat.h>
 
 
 namespace logstreamxx {
