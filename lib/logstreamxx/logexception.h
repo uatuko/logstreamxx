@@ -28,7 +28,7 @@
 namespace logstreamxx {
 
 	/**
-	*   @brief Log exception
+	*   @brief Log exception class
 	*
 	*   This is the base class for all the exceptions used within
 	*   @c logstreamxx namespace.
