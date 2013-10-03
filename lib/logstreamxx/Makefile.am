@@ -7,11 +7,13 @@ lib_LTLIBRARIES            = liblogstreamxx.la
 liblogstreamxx_la_LIBADD   =
 liblogstreamxx_la_LDFLAGS  = -version-info @LIBLOGSTREAMXX_LT_VERSION@ -no-undefined
 liblogstreamxx_la_SOURCES  = \
+	logexception.cpp \
 	logstreambuf.cpp \
 	logstream.cpp
 
 liblogstreamxxinclude_HEADERS = \
 	priority.h \
+	logexception.h \
 	logstreambuf.h \
 	logstream.h
 
