@@ -22,7 +22,7 @@ logger << logstreamxx::priority::info << "this is logged at info level" << std::
 logger << "this will also be in info level" << std::endl;
 ```
 
-Above code would output;
+Above code block would output the following to `STDOUT`;
 ```
 Oct  3 20:31:22.190010 [DEBG] default is to log at debug level
 Oct  3 20:31:22.190611 [DEBG] 24 in hex: 18
