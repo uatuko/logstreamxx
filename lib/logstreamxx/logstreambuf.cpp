@@ -206,6 +206,9 @@ namespace logstreamxx {
 		// backup the current priority
 		priority::log_priority_t prev_priority = _priority;
 
+		// sync existing buffer content
+		sync();
+
 		// update
 		_priority = p;
 
