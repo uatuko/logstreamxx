@@ -11,7 +11,8 @@ if HAVE_CPPUNIT
 check_PROGRAMS = tap-runner.tap
 TESTS          += $(check_PROGRAMS)
 
-CPPUNIT_TEST_SOURCES =
+CPPUNIT_TEST_SOURCES = \
+	logstreambuf_test.h logstreambuf_test.cpp
 
 
 tap_runner_tap_SOURCES = \
