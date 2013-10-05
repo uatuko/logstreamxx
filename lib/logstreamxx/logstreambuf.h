@@ -163,7 +163,7 @@ namespace logstreamxx {
 		*   If @c s is 0 or @n is less than 2, this method has no effect.
 		*
 		*   @note The buffer space pointed by @c s will be deallocated
-		*         by the destructor.
+		*         by the destructor and any successive calls to this method.
 		*
 		*/
 		virtual logstreambuf * setbuf( char * s, std::streamsize n ) throw();
