@@ -113,7 +113,7 @@ namespace logstreamxx {
 			}
 
 			// write prefix
-			if ( wprefix() ) {
+			if ( wlprefix() ) {
 
 				//  write buffer content
 				if ( write( _logfd, pbase(), flush_size ) == flush_size ) {
@@ -134,7 +134,7 @@ namespace logstreamxx {
 	}
 
 
-	bool logstreambuf::wprefix() throw() {
+	bool logstreambuf::wlprefix() throw() {
 
 		// check - do we need to write the prefix
 		if (! _continue ) {

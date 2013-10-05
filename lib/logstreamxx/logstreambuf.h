@@ -132,7 +132,7 @@ namespace logstreamxx {
 		*   prefix.
 		*
 		*/
-		virtual bool wprefix() throw();
+		virtual bool wlprefix() throw();
 
 		/**
 		*   @brief consume the buffer
