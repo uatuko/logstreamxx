@@ -21,7 +21,6 @@
 #define LOGSTREAMXX_LOGEXCEPTION_H
 
 #include <exception>
-#include <cstddef>
 #include <string>
 
 
@@ -41,12 +40,12 @@ namespace logstreamxx {
 		*   @brief constructor
 		*
 		*   Create an instance with the passed in error message.
-		*   If a message is not passed in or is equal to NULL then
-		*   the system error message is used.
+		*   If a message is not passed in or is equal to 0 (default)
+		*   then the system error message is used.
 		*
 		*   @param message (optional) user error message
 		*/
-		logexception( const char * message = NULL ) throw();
+		logexception( const char * message = 0 ) throw();
 
 		virtual ~logexception() throw();   //!< destructor
 

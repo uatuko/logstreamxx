@@ -80,7 +80,7 @@ namespace logstreamxx {
 		tm * ti;
 
 		// current timestamp
-		gettimeofday( &tv, NULL );
+		gettimeofday( &tv, 0 );
 		ti = localtime( &tv.tv_sec );
 
 		// format
