@@ -26,6 +26,9 @@ int main() {
 	// log stream
 	logstreamxx::logstream logger;
 
+	// set log output level
+	logger.loglevel( logstreamxx::priority::debug );
+
 	logger << "default is to log at debug level" << std::endl;
 	logger << "24 in hex: " << std::hex << 24 << std::endl;
 	logger << "24 in oct: " << std::oct << 24 << std::endl;

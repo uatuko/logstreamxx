@@ -90,5 +90,22 @@ namespace logstreamxx {
 
 	}
 
+
+	int logstream::loglevel( const priority::log_priority_t &level ) throw() {
+
+		// create bit mask
+		int mask = 1 << level;
+		mask = ( mask - 1 ) | mask;
+
+		// log stream buffer
+		logstreambuf * sb = (logstreambuf *) rdbuf();
+
+		// set mask
+		sb->setlogmask( mask );
+
+		return mask;
+
+	}
+
 } /* end of namespace logstreamxx */
 

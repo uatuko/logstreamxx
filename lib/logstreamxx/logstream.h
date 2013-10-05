@@ -74,6 +74,19 @@ namespace logstreamxx {
 		*/
 		std::ostream &operator <<( const priority::log_priority_t &p ) throw();
 
+		/**
+		*   @brief set log output level
+		*   @param level log output level
+		*   @return log priority bit mask
+		*
+		*   This enables logging up to @c level by setting the log
+		*   priority bit mask at the log stream buffer and returns the
+		*   log-mask set.
+		*
+		*/
+		int loglevel( const priority::log_priority_t &level ) throw();
+
+
 	private:
 
 		/** file descriptor */
