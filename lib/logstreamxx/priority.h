@@ -50,6 +50,37 @@ namespace logstreamxx {
 			debug    = 7     //!< debug-level message
 		};
 
+
+		/**
+		*   @brief Log priority mask structure
+		*
+		*   This structure holds the bit mask reference values related
+		*   to log priorities.
+		*
+		*/
+		struct mask {
+
+			/**
+			*   @brief log priority masks type
+			*
+			*   These are the bit mask values for their corresponding
+			*   log priorities.
+			*
+			*/
+			enum log_priority_mask_t {
+				emerg    = 1,         //!< emergency log priority mask
+				alert    = 1 << 1,    //!< alert log priority mask
+				crit     = 1 << 2,    //!< critical log priority mask
+				err      = 1 << 3,    //!< error log priority mask
+				warning  = 1 << 4,    //!< warning log priority mask
+				notice   = 1 << 5,    //!< notice log priority mask
+				info     = 1 << 6,    //!< info log priority mask
+				debug    = 1 << 7     //!< debug log priority mask
+			};
+
+		};
+
+
 		/**
 		*   @brief convert log priority value into readable text
 		*   @return text value of the log priority
