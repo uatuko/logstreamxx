@@ -45,6 +45,12 @@ Please report all bugs and feature requests in [bugzilla](http://bugs.geniusse.c
 Known issues can be found [here](http://bugs.geniusse.com/buglist.cgi?query_format=specific&order=relevance%20desc&bug_status=__open__&product=logstreamxx).
 
 
+### Version history
+
+__0.0.1__ - _05th October 2013_
+*   Initial release
+
+
 ### Copyright and License
 
 Copyright (C) 2013 Uditha Atukorala.
