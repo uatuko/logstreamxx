@@ -183,6 +183,24 @@ namespace logstreamxx {
 	}
 
 
+	logstreambuf * logstreambuf::setbuf( char * s, std::streamsize n ) throw() {
+
+		// sanity check
+		if ( ( s != 0 ) && ( n > 1 ) ) {
+
+			// cleanup existing output buffer
+			delete [] pbase();
+
+			// setup new output buffer
+			setp( s, s + ( n - 1 ) );
+
+		}
+
+		return this;
+
+	}
+
+
 	priority::log_priority_t logstreambuf::lpriority( const priority::log_priority_t &p ) throw() {
 
 		// backup the current priority

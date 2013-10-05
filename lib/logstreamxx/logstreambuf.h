@@ -152,6 +152,22 @@ namespace logstreamxx {
 		*/
 		const std::string lstamp() const throw();
 
+		/**
+		*   @brief set buffer space
+		*   @param s pointer to a allocated buffer space
+		*   @param n allocated buffer size
+		*   @return @c this
+		*
+		*   Set the array of @c n characters pointed by @c s as the internal
+		*   character sequence to be used by the log stream buffer object.
+		*   If @c s is 0 or @n is less than 2, this method has no effect.
+		*
+		*   @note The buffer space pointed by @c s will be deallocated
+		*         by the destructor.
+		*
+		*/
+		virtual logstreambuf * setbuf( char * s, std::streamsize n ) throw();
+
 
 	private:
 
