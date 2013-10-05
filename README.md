@@ -32,6 +32,19 @@ Oct  3 20:31:22.190643 [INFO] this will also be in info level
 ```
 
 
+### Dependencies
+
+* CppUnit >= 1.12.1 (for unit tests)
+* Doxygen (for doxygen documentation, of course)
+
+
+### Bugs and Feature Requests
+
+Please report all bugs and feature requests in [bugzilla](http://bugs.geniusse.com/) under the
+[logstreamxx](http://bugs.geniusse.com/enter_bug.cgi?product=logstreamxx) project.
+Known issues can be found [here](http://bugs.geniusse.com/buglist.cgi?query_format=specific&order=relevance%20desc&bug_status=__open__&product=logstreamxx).
+
+
 ### Copyright and License
 
 Copyright (C) 2013 Uditha Atukorala.
