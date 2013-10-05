@@ -152,6 +152,7 @@ namespace logstreamxx {
 		*/
 		const std::string lstamp() const throw();
 
+
 	private:
 
 		/** log file descriptor */
@@ -159,9 +160,6 @@ namespace logstreamxx {
 
 		/** log entry/line continuation flag */
 		bool _continue;
-
-		/** size of the internal buffer */
-		size_t _bufsize;
 
 		/** log priority */
 		priority::log_priority_t _priority;

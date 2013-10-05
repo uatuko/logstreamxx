@@ -28,8 +28,8 @@
 namespace logstreamxx {
 
 	logstreambuf::logstreambuf() throw() :
-			_logfd( STDOUT_FILENO ), _bufsize( LOGSTREAMBUF_SIZE ),
-			_continue( false ), _priority( priority::debug ) {
+			_logfd( STDOUT_FILENO ), _continue( false ),
+			_priority( priority::debug ) {
 
 		// initialise buffer space
 		init_buf();
@@ -38,8 +38,8 @@ namespace logstreamxx {
 
 
 	logstreambuf::logstreambuf( int output_fd ) throw( logexception ) :
-			_logfd( output_fd ), _bufsize( LOGSTREAMBUF_SIZE ),
-			_continue( false ), _priority( priority::debug ) {
+			_logfd( output_fd ), _continue( false ),
+			_priority( priority::debug ) {
 
 		// sanity check
 		if ( _logfd < 0 ) {
@@ -66,10 +66,10 @@ namespace logstreamxx {
 	void logstreambuf::init_buf() throw() {
 
 		// allocate output buffer space
-		char * pbuf = new char[_bufsize];
+		char * pbuf = new char[LOGSTREAMBUF_SIZE];
 
 		// setup output buffer
-		setp( pbuf, pbuf + ( _bufsize - 1 ) );
+		setp( pbuf, pbuf + ( LOGSTREAMBUF_SIZE - 1 ) );
 
 	}
 
