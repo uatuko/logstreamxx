@@ -88,6 +88,24 @@ namespace logstreamxx {
 		*/
 		priority::log_priority_t lpriority( const priority::log_priority_t &p ) throw();
 
+		/**
+		*   @brief set log priority mask
+		*   @param mask log priority mask
+		*   @return previous log priority mask
+		*
+		*   This method sets the log-mask for the log stream buffer
+		*   instance and returns the previous log-mask. If the @c mask
+		*   is 0 then the current log-mask is not modified.
+		*
+		*   Once a log-mask is set only the priorities that have the
+		*   corresponding bit set will be enabled for logging.
+		*
+		*   @note The log-mask defaults to 1 (log only priority::emerg)
+		*         on initialisation.
+		*
+		*/
+		int setlogmask( int mask ) throw();
+
 
 	protected:
 
@@ -179,6 +197,9 @@ namespace logstreamxx {
 
 		/** log priority */
 		priority::log_priority_t _priority;
+
+		/** log priority mask */
+		int _mask;
 
 		/** initialise buffer space */
 		void init_buf() throw();

@@ -29,7 +29,7 @@ namespace logstreamxx {
 
 	logstreambuf::logstreambuf() throw() :
 			_logfd( STDOUT_FILENO ), _continue( false ),
-			_priority( priority::debug ) {
+			_priority( priority::debug ), _mask( 1 ) {
 
 		// initialise buffer space
 		init_buf();
@@ -39,7 +39,7 @@ namespace logstreamxx {
 
 	logstreambuf::logstreambuf( int output_fd ) throw( logexception ) :
 			_logfd( output_fd ), _continue( false ),
-			_priority( priority::debug ) {
+			_priority( priority::debug ), _mask( 1 ) {
 
 		// sanity check
 		if ( _logfd < 0 ) {
@@ -101,6 +101,16 @@ namespace logstreamxx {
 
 		// sanity check - is there anything to flush?
 		if ( flush_size > 0 ) {
+
+			// check - logging enabled for the current priority?
+			if ( ( ( 1 << _priority ) & ( _mask ) ) == 0 ) {
+
+				// not enabled, update buffer pointers
+				pbump( -flush_size );
+
+				return flush_size;
+
+			}
 
 			// write prefix
 			if ( wprefix() ) {
@@ -213,6 +223,24 @@ namespace logstreamxx {
 		_priority = p;
 
 		return prev_priority;
+
+	}
+
+
+	int logstreambuf::setlogmask( int mask ) throw() {
+
+		// backup the current mask
+		int prev_mask = _mask;
+
+		// sanity check
+		if ( mask != 0 ) {
+
+			// update
+			_mask = mask;
+
+		}
+
+		return prev_mask;
 
 	}
 
