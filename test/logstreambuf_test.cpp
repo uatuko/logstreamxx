@@ -20,6 +20,7 @@
 #include "logstreambuf_test.h"
 
 #include <logstreamxx/logstreambuf.h>
+#include <unistd.h>
 
 
 // register the fixture into the 'registry'
@@ -36,6 +37,22 @@ void logstreambuf_test::test_constructor() {
 
 	// assert - read buffer will be empty always
 	CPPUNIT_ASSERT( 0 == sb.in_avail() );
+
+}
+
+
+void logstreambuf_test::test_overloaded_constructor() {
+
+	// instance with STDERR as the destination
+	CPPUNIT_ASSERT_NO_THROW( logstreambuf sb( STDERR_FILENO ) );
+
+}
+
+
+void logstreambuf_test::test_overloaded_constructor_fail() {
+
+	// this will throw an invalid file descriptor exception
+	CPPUNIT_ASSERT_THROW( logstreambuf sb( -1 ), logexception );
 
 }
 
