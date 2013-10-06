@@ -47,6 +47,11 @@ Known issues can be found [here](http://bugs.geniusse.com/buglist.cgi?query_form
 
 ### Version history
 
+__0.0.2__ - _06th October 2013_
+*   Minor bug fixes
+*   Abiity set log output mask to enable logging for selected priorities
+
+
 __0.0.1__ - _05th October 2013_
 *   Initial release
 
