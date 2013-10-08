@@ -30,6 +30,7 @@ class logstreambuf_test : public CppUnit::TestFixture {
 	CPPUNIT_TEST( test_constructor );
 	CPPUNIT_TEST( test_overloaded_constructor );
 	CPPUNIT_TEST( test_overloaded_constructor_fail );
+	CPPUNIT_TEST( test_lpriority );
 	CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -37,6 +38,7 @@ public:
 	void test_constructor();
 	void test_overloaded_constructor();
 	void test_overloaded_constructor_fail();
+	void test_lpriority();
 
 };
 

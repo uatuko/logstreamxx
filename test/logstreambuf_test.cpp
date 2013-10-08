@@ -56,3 +56,17 @@ void logstreambuf_test::test_overloaded_constructor_fail() {
 
 }
 
+
+void logstreambuf_test::test_lpriority() {
+
+	// log stream buffer
+	logstreambuf sb;
+
+	// set priority to info and assert that default priority is debug
+	CPPUNIT_ASSERT( priority::debug == sb.lpriority( priority::info ) );
+
+	// set priority to error and assert that last priority is info
+	CPPUNIT_ASSERT( priority::info == sb.lpriority( priority::err ) );
+
+}
+
