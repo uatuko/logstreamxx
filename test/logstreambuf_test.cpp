@@ -70,3 +70,20 @@ void logstreambuf_test::test_lpriority() {
 
 }
 
+
+void logstreambuf_test::test_setlogmask() {
+
+	// log stream buffer
+	logstreambuf sb;
+
+	// set 'debug' mask and assert that default mast if 'emerg'
+	CPPUNIT_ASSERT( priority::mask::emerg == sb.setlogmask( priority::mask::debug ) );
+
+	// set the mask to 0 and assert that last mask is 'debug'
+	CPPUNIT_ASSERT( priority::mask::debug == sb.setlogmask( 0 ) );
+
+	// set the mask to 0 and assert that it is still 'debug'
+	CPPUNIT_ASSERT( priority::mask::debug == sb.setlogmask( 0 ) );
+
+}
+
