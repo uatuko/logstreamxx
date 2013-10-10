@@ -87,3 +87,17 @@ void logstreambuf_test::test_setlogmask() {
 
 }
 
+
+void logstreambuf_test::test_setlogmask_complex() {
+
+	// log stream buffer
+	logstreambuf sb;
+
+	// set mask
+	sb.setlogmask( priority::mask::emerg | priority::mask::crit );
+
+	// assert
+	CPPUNIT_ASSERT( ( priority::mask::emerg | priority::mask::crit ) == sb.setlogmask( 0 ));
+
+}
+
