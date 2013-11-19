@@ -107,5 +107,15 @@ namespace logstreamxx {
 
 	}
 
+
+	void logstream::logprefix( const std::string &p ) throw() {
+
+		// log stream buffer
+		logstreambuf * sb = (logstreambuf *) rdbuf();
+
+		sb->lprefix( p );
+
+	}
+
 } /* end of namespace logstreamxx */
 

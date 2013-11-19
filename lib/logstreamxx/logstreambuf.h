@@ -106,6 +106,18 @@ namespace logstreamxx {
 		*/
 		int setlogmask( int mask ) throw();
 
+		/**
+		*   @brief set an additional prefix for the log lines
+		*   @param prefix log prefix
+		*   @return previous log prefix
+		*
+		*   Set an additional log prefix that will be added to each log
+		*   line written out. This can be helpful to distinguish logs from
+		*   different processes if they are logged to the same destination.
+		*
+		*/
+		std::string lprefix( const std::string &prefix ) throw();
+
 
 	protected:
 
@@ -200,6 +212,9 @@ namespace logstreamxx {
 
 		/** log priority mask */
 		int _mask;
+
+		/** additional log prefix to add to the log lines */
+		std::string _prefix;
 
 		/** initialise buffer space */
 		void init_buf() throw();

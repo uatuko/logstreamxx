@@ -143,6 +143,10 @@ namespace logstreamxx {
 			std::stringstream ss;
 			ss  << lstamp() << " [" << priority::text( _priority ) << "] ";
 
+			if ( _prefix.length() > 0 ) {
+				ss << _prefix << " ";
+			}
+
 			// write prefix
 			if ( write( _logfd, ss.str().c_str(), ss.str().length() ) != ss.str().length() ) {
 				return false;
@@ -241,6 +245,19 @@ namespace logstreamxx {
 		}
 
 		return prev_mask;
+
+	}
+
+
+	std::string logstreambuf::lprefix( const std::string &prefix ) throw() {
+
+		// backup the current prefix
+		std::string prev_prefix = _prefix;
+
+		// update
+		_prefix = prefix;
+
+		return prev_prefix;
 
 	}
 

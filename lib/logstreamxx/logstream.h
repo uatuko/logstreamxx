@@ -86,6 +86,18 @@ namespace logstreamxx {
 		*/
 		int loglevel( const priority::log_priority_t &level ) throw();
 
+		/**
+		*   @brief set an extra prefix for the log lines
+		*   @param p prefix
+		*
+		*   This sets (or clears) an extra prefix to be added to the
+		*   log lines written out. This can be helpful to distinguish
+		*   logs from different processes if they are logged to the same
+		*   destination.
+		*
+		*/
+		void logprefix( const std::string &p ) throw();
+
 
 	private:
 
