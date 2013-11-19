@@ -33,6 +33,7 @@ class logstreambuf_test : public CppUnit::TestFixture {
 	CPPUNIT_TEST( test_lpriority );
 	CPPUNIT_TEST( test_setlogmask );
 	CPPUNIT_TEST( test_setlogmask_complex );
+	CPPUNIT_TEST( test_lprefix );
 	CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -43,6 +44,7 @@ public:
 	void test_lpriority();
 	void test_setlogmask();
 	void test_setlogmask_complex();
+	void test_lprefix();
 
 };
 

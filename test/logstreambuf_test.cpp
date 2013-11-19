@@ -101,3 +101,20 @@ void logstreambuf_test::test_setlogmask_complex() {
 
 }
 
+
+void logstreambuf_test::test_lprefix() {
+
+	// log stream buffer
+	logstreambuf sb;
+
+	// prefix
+	const std::string prefix = "-- prefix --";
+
+	// set prefix
+	sb.lprefix( prefix );
+
+	// assert
+	CPPUNIT_ASSERT( prefix == sb.lprefix( "" ) );
+
+}
+
