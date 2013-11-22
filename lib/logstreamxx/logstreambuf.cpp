@@ -88,7 +88,7 @@ namespace logstreamxx {
 		int n = strftime( buffer, 16, "%b %e %T", ti );
 
 		// append milliseconds
-		sprintf( ( buffer + n ), ".%ld", (long int) tv.tv_usec );
+		sprintf( ( buffer + n ), ".%06d", (int) tv.tv_usec );
 
 		return buffer;
 
