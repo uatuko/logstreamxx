@@ -1,5 +1,5 @@
 /*
-*  psocksxx - A C++ wrapper for POSIX sockets
+*  logstreamxx - C++ logging library based on standard stream classes
 *  Copyright (C) 2013 Uditha Atukorala
 *
 *  This software library is free software; you can redistribute it and/or modify
