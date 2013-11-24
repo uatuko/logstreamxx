@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.68])
-AC_INIT([logstreamxx], [0.1.0-snapshot], [http://bugs.geniusse.com/])
+AC_INIT([logstreamxx], [0.1.0], [http://bugs.geniusse.com/])
 AC_CONFIG_AUX_DIR([aux-build])
 AC_CONFIG_MACRO_DIR([aux-build/m4])
 AC_CONFIG_HEADERS([include/config.h])
@@ -33,7 +33,7 @@ AC_CONFIG_HEADERS([include/config.h])
 # CURRENT : REVISION : AGE
 
 # lib versions
-LIBLOGSTREAMXX_LT_VERSION=2:0:2
+LIBLOGSTREAMXX_LT_VERSION=2:1:2
 AC_SUBST(LIBLOGSTREAMXX_LT_VERSION)
 
 # init
